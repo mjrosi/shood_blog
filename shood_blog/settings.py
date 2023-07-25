@@ -31,7 +31,7 @@ SECRET_KEY = 'mykey'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['shoodblog.herokuapp.com', 'localhost', '8000-mjrosi-shoodblog-ubeqxxyprgd.ws-eu102.gitpod.io']
+ALLOWED_HOSTS = ['shoodblog-abf09a84db44.herokuapp.com', 'localhost', '8000-mjrosi-shoodblog-ubeqxxyprgd.ws-eu102.gitpod.io']
 
 
 # Application definition
