@@ -1,0 +1,1 @@
+web: gunicorn shood_blog.wsgi
