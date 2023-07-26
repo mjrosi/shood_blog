@@ -1,64 +1,53 @@
 {% extends "base.html" %}
+
 {% load crispy_forms_tags %}
 
 {% block content %}
+<div class="container container-text">
+  <div class="row">
+    <div class="col-md-8 mt-3 offset-md-2">
+      <h2 class="text-center brand">Contact Us</h2>
 
-<div class="container-fluid mt-5">
-    <div class="row d-flex justify-content-center">
-        <div class="col-sm-8 mt-5 mb-5">
-            <h1 class="text-center">Contact Us</h1><hr>
-        </div>
+      <p class="mb-4 thin">Have any questions or suggestions? Need assistance with your grocery delivery? We're here to help! Please fill out the form below to get in touch with our friendly support team.</p>
     </div>
-<div class="container">
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-6">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12 p-5 bg-darker rounded booking-card">
-                        <!-- Display if user is not logged in -->
-                        {% if not user.is_authenticated %}
-                        <h2>Message Us</h2>
-                        <p>Please login to slide into our DM's!</p>
-                        <button class="btn btn-success" type="submit"><a href="{% url 'account_login' %}">Go to Login
-                                Page</a></button>
-                        {% else %}
-                        <!-- Display form if user is logged in-->
-                        {% if user.is_authenticated %}
-                        <div class="row text-center">
-                            <div class="col-12">
-                                <h2 class="fw-bold mt-3">Send Message</h2>
-                                <hr>
-                            </div>
-                        </div>
-                        <form method="POST" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <!-- Contact form -->
-                            {{ contact_form| crispy }}
-
-                            <button class="btn btn-success" type="submit">Submit</button>
-                        </form>
-                        {% endif %}
-                        {% endif %}
-                        <!-- Form Errors from stack overflow -->
-                        {% if contact_form.errors %}
-                        {% for field in contact_form %}
-                        {% for error in field.errors %}
-                        <div class="alert alert-danger">
-                            <strong>{{ error|escape }}</strong>
-                        </div>
-                        {% endfor %}
-                        {% endfor %}
-                        {% for error in contact_form.non_field_errors %}
-                        <div class="alert alert-danger">
-                            <strong>{{ error|escape }}</strong>
-                        </div>
-                        {% endfor %}
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-8 mt-3 offset-md-2">
+      <!-- Display if user is not logged in -->
+      {% if not user.is_authenticated %}
+      <form>
+        <h2 class="text-center brand">Get in Touch</h2>
+        <p class="thin">Please log in to send us a message. We value your feedback and questions!</p>
+        <button class="btn-signup" type="submit"><a href="{% url 'account_login' %}" class="link">Sign in</a></button>
+      </form>
+      {% else %}
+      <!-- Display form if user is logged in-->
+      {% if user.is_authenticated %}
+      <form method="POST" enctype="multipart/form-data" class="card-body dark-bg">
+        {% csrf_token %}
+        <div class="form-group">
+          <!-- Contact form -->
+          {{ contact_form| crispy }}
         </div>
+        <button class="btn-signup" type="submit">Submit</button>
+      </form>
+      {% endif %}
+      {% endif %}
+      <!-- Form Errors -->
+      {% if contact_form.errors %}
+      <div class="alert alert-danger">
+        {% for field in contact_form %}
+          {% for error in field.errors %}
+            <p>{{ error|escape }}</p>
+          {% endfor %}
+        {% endfor %}
+        {% for error in contact_form.non_field_errors %}
+          <p>{{ error|escape }}</p>
+        {% endfor %}
+      </div>
+      {% endif %}
     </div>
+  </div>
 </div>
-
 {% endblock %}

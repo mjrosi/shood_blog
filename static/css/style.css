@@ -1,319 +1,324 @@
 .brand {
-    font-family: Lato, sans-serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #4A4A4F;
-  }
-  
-  .red-o {
-    color: #E84610;
-  }
-  
-  .thin {
-    font-weight: 300;
-  }
-  
-  .light-bg {
-    background-color: #fff;
-  }
-  
-  .dark-bg {
-    background-color: #445261;
-  }
-  
-  .main-bg {
-    background-color: #F9FAFC;
-  }
-  
-  .card {
-    border: none;
-    background-color: transparent;
-  }
-  
-  #card-heading {
-    margin-top: 1rem;
-    color: #3c3c68;
-  }
-  
-  .image-container {
-    position: relative;
-  }
-  
-   #hero-image {
-      background-color: #3c3c68;
-      height: 300px; 
-      background-repeat: no-repeat; 
-      background-size: cover;
-   }
-  
-  .image-flash {
-    position: absolute;
-    bottom: 5%;
-    min-width: 30%;
-    left: -2px;
-    background-color: #23BBBB;
-  }
-  
-  .author {
-    color: white;
-    margin: 4px;
-    text-transform: uppercase;
-  }
-  
-  .masthead {
-    margin-top: 10px;
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-    width: 100%;
-  }
-  
-  .masthead-text {
-    color: #445261;
-    position: relative;
-  }
-  
-  .masthead-image {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .masthead-image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 90%;
-    height: 100%;
-    width: 150%;
-    background: #445261;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
-    transform: skew(15deg);
-    z-index: 100;
-  }
-  
-  .post-link {
-    text-decoration: none;
-    color: #445261;
-  }
-  
-  .post-link:hover,
-  .page-link {
-    color: #3c3c68;
-  }
-  
-  .page-link:hover {
+  font-family: Lato, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #4A4A4F;
+}
+
+.red-o {
+  color: #E84610;
+}
+
+.thin {
+  font-weight: 300;
+}
+
+.light-bg {
+  background-color: #fff;
+}
+
+.dark-bg {
+  background-color: #445261;
+}
+
+.main-bg {
+  background-color: #F9FAFC;
+}
+
+.card {
+  border: none;
+  background-color: transparent;
+}
+
+#card-heading {
+  margin-top: 1rem;
+  color: #3c3c68;
+}
+
+.image-container {
+  position: relative;
+}
+
+.container-text {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+ #hero-image {
     background-color: #3c3c68;
-    color: white;
+    height: 300px; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+ }
+
+.image-flash {
+  position: absolute;
+  bottom: 5%;
+  min-width: 30%;
+  left: -2px;
+  background-color: #23BBBB;
+}
+
+.author {
+  color: white;
+  margin: 4px;
+  text-transform: uppercase;
+}
+
+.masthead {
+  margin-top: 10px;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.masthead-text {
+  color: #445261;
+  position: relative;
+}
+
+.masthead-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.masthead-image:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 90%;
+  height: 100%;
+  width: 150%;
+  background: #445261;
+  -webkit-transform: skew(15deg);
+  -moz-transform: skew(15deg);
+  transform: skew(15deg);
+  z-index: 100;
+}
+
+.post-link {
+  text-decoration: none;
+  color: #445261;
+}
+
+.post-link:hover,
+.page-link {
+  color: #3c3c68;
+}
+
+.page-link:hover {
+  background-color: #3c3c68;
+  color: white;
+}
+
+.post-title {
+  margin-top: 20%;
+  margin-left: 5%;
+}
+
+.post-subtitle {
+  margin-left: 5%;
+  color: darkgray;
+}
+
+.btn-signup {
+  background-color: #3c3c68;
+  color: #fff;
+}
+
+.btn-signup:hover,
+.btn-signup:active {
+  background-color: #fff;
+  color: #3c3c68;
+}
+
+.link {
+  color: #3c3c68;
+  text-decoration: none;
+}
+
+.link:hover,
+.link:active {
+  color: #445261;
+  text-decoration: underline;
+}
+
+.btn-like {
+  color: #E84610;
+  border: none;
+  background: transparent;
+}
+
+.btn-like:hover,
+.btn-like:active {
+  color: #E84610;
+  background: transparent;
+  border: none;
+}
+
+/* Center the content on the page */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Add some margin to the top and bottom*/
+.mt-3 {
+  margin-top: 1rem !important;
+  margin-bottom: 1rem;
+}
+
+/* Style the heading */
+h3 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Style the paragraph */
+.signup > p {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* Style the link in the paragraph */
+.link {
+  color: #3c3c68;
+  text-decoration: none;
+}
+
+/* Style the form inputs */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.2rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ced4da;
+}
+
+/* Style the submit button */
+.btn-primary {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: #3c3c68;
+  color: #fff;
+  border: 1px solid #3c3c68;
+  border-radius: 0.25rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.2rem;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: white;
+  color: #3c3c68;
+}
+
+.footer-dark {
+  padding:50px 0;
+  color:#f0f9ff;
+  background-color: #3c3c68;
+}
+
+.footer-dark h3 {
+  margin-top:0;
+  margin-bottom:12px;
+  font-weight:bold;
+  font-size:16px;
+}
+
+.footer-dark ul {
+  padding:0;
+  list-style:none;
+  line-height:1.6;
+  font-size:14px;
+  margin-bottom:0;
+}
+
+.footer-dark ul a {
+  color:white;
+  text-decoration:none;
+  opacity:0.6;
+}
+
+.footer-dark ul a:hover {
+  opacity:0.8;
+}
+
+@media (max-width:767px) {
+  .footer-dark .item:not(.social) {
+    text-align:center;
+    padding-bottom:20px;
   }
-  
-  .post-title {
-    margin-top: 20%;
-    margin-left: 5%;
-  }
-  
-  .post-subtitle {
-    margin-left: 5%;
-    color: darkgray;
-  }
-  
-  .btn-signup {
-    background-color: #3c3c68;
-    color: #fff;
-  }
-  
-  .btn-signup:hover,
-  .btn-signup:active {
-    background-color: #fff;
-    color: #3c3c68;
-  }
-  
-  .link {
-    color: #3c3c68;
-    text-decoration: none;
-  }
-  
-  .link:hover,
-  .link:active {
-    color: #445261;
-    text-decoration: underline;
-  }
-  
-  .btn-like {
-    color: #E84610;
-    border: none;
-    background: transparent;
-  }
-  
-  .btn-like:hover,
-  .btn-like:active {
-    color: #E84610;
-    background: transparent;
-    border: none;
-  }
-  
-  /* Center the content on the page */
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  /* Add some margin to the top and bottom*/
-  .mt-3 {
-    margin-top: 1rem !important;
-    margin-bottom: 1rem;
-  }
-  
-  /* Style the heading */
-  h3 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-  }
-  
-  /* Style the paragraph */
-  .signup > p {
-    font-size: 1.2rem;
-    text-align: center;
-  }
-  
-  /* Style the link in the paragraph */
-  .link {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  /* Style the form inputs */
-  .form-group {
-    margin-bottom: 1rem;
-  }
-  
-  label {
-    display: block;
-    font-weight: bold;
-  }
-  
-  input[type="text"],
-  input[type="email"],
-  input[type="password"] {
-    width: 100%;
-    padding: 0.75rem;
-    font-size: 1.2rem;
-    border-radius: 0.25rem;
-    border: 1px solid #ced4da;
-  }
-  
-  /* Style the submit button */
-  .btn-primary {
-    display: inline-block;
-    font-weight: 400;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    background-color: #3c3c68;
-    color: #fff;
-    border: 1px solid #3c3c68;
-    border-radius: 0.25rem;
-    padding: 0.75rem 1.5rem;
-    font-size: 1.2rem;
-    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-      box-shadow 0.15s ease-in-out;
-  }
-  
-  .btn-primary:hover {
-    background-color: white;
-    color: #3c3c68;
-  }
-  
-  .footer-dark {
-    padding:50px 0;
-    color:#f0f9ff;
-    background-color: #3c3c68;
-  }
-  
-  .footer-dark h3 {
-    margin-top:0;
-    margin-bottom:12px;
-    font-weight:bold;
-    font-size:16px;
-  }
-  
-  .footer-dark ul {
-    padding:0;
-    list-style:none;
-    line-height:1.6;
-    font-size:14px;
-    margin-bottom:0;
-  }
-  
-  .footer-dark ul a {
-    color:white;
-    text-decoration:none;
-    opacity:0.6;
-  }
-  
-  .footer-dark ul a:hover {
-    opacity:0.8;
-  }
-  
-  @media (max-width:767px) {
-    .footer-dark .item:not(.social) {
-      text-align:center;
-      padding-bottom:20px;
-    }
-  }
-  
+}
+
+.footer-dark .item.text {
+  margin-bottom:36px;
+}
+
+@media (max-width:767px) {
   .footer-dark .item.text {
-    margin-bottom:36px;
-  }
-  
-  @media (max-width:767px) {
-    .footer-dark .item.text {
-      margin-bottom:0;
-    }
-  }
-  
-  .footer-dark .item.text p {
-    opacity:0.6;
     margin-bottom:0;
   }
-  
+}
+
+.footer-dark .item.text p {
+  opacity:0.6;
+  margin-bottom:0;
+}
+
+.footer-dark .item.social {
+  text-align:center;
+}
+
+@media (max-width:991px) {
   .footer-dark .item.social {
     text-align:center;
+    margin-top:20px;
   }
-  
-  @media (max-width:991px) {
-    .footer-dark .item.social {
-      text-align:center;
-      margin-top:20px;
-    }
-  }
-  
-  .footer-dark .item.social > a {
-    font-size:20px;
-    width:36px;
-    height:36px;
-    line-height:36px;
-    display:inline-block;
-    text-align:center;
-    border-radius:50%;
-    box-shadow:0 0 0 1px rgba(255,255,255,0.4);
-    margin:0 8px;
-    color:#fff;
-    opacity:0.75;
-  }
-  
-  .footer-dark .item.social > a:hover {
-    opacity:0.9;
-  }
-  
-  .footer-dark .copyright {
-    text-align:center;
-    padding-top:24px;
-    opacity:0.3;
-    font-size:13px;
-    margin-bottom:0;
-  }
-  
-  .social-color {
-    color: white;
-  }
+}
+
+.footer-dark .item.social > a {
+  font-size:20px;
+  width:36px;
+  height:36px;
+  line-height:36px;
+  display:inline-block;
+  text-align:center;
+  border-radius:50%;
+  box-shadow:0 0 0 1px rgba(255,255,255,0.4);
+  margin:0 8px;
+  color:#fff;
+  opacity:0.75;
+}
+
+.footer-dark .item.social > a:hover {
+  opacity:0.9;
+}
+
+.footer-dark .copyright {
+  text-align:center;
+  padding-top:24px;
+  opacity:0.3;
+  font-size:13px;
+  margin-bottom:0;
+}
+
+.social-color {
+  color: white;
+}
