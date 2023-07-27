@@ -8,7 +8,7 @@ from django.views.generic.edit import UpdateView
 from django.core.paginator import Paginator
 
 from .models import Booking
-from .forms import DeliveryBookingForm
+from .forms import BookingForm
 
 
 def get_user_instance(request):
@@ -23,17 +23,17 @@ class DeliveryBookings(View):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             email = request.user.email
-            delivery_booking_form = DeliveryBookingForm(initial={'email': email})
+            booking_form = BookingForm(initial={'email': email})
         else:
-            delivery_booking_form = DeliveryBookingForm()
+            booking_form = BookingForm()
         return render(request, 'bookings/delivery_request.html',
-                      {'delivery_booking_form': delivery_booking_form})
+                      {'booking_form': booking_form})
 
     def post(self, request):
-        delivery_booking_form = DeliveryBookingForm(data=request.POST)
+        booking_form = BookingForm(data=request.POST)
 
-        if delivery_booking_form.is_valid():
-            delivery_booking = delivery_booking_form.save(commit=False)
+        if booking_form.is_valid():
+            delivery_booking = booking_form.save(commit=False)
             delivery_booking.user = request.user
             delivery_booking.save()
             messages.success(
@@ -41,7 +41,7 @@ class DeliveryBookings(View):
             return render(request, 'bookings/confirmed.html')
 
         return render(request, 'bookings/delivery_request.html',
-                      {'delivery_booking_form': delivery_booking_form})
+                      {'booking_form': booking_form})
 
 class Confirmed(generic.DetailView):
     template_name = 'bookings/confirmed.html'
@@ -81,7 +81,7 @@ class DeliveryBookingList(generic.ListView):
 
 class EditDeliveryBooking(SuccessMessageMixin, UpdateView):
     model = Booking
-    form_class = DeliveryBookingForm
+    form_class = BookingForm
     template_name = 'bookings/edit_delivery.html'
     success_message = 'Booking has been updated.'
 

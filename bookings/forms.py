@@ -7,7 +7,7 @@ from .models import Booking
 # The booking form users will use to book a delivery service
 
 
-class DeliveryBookingForm(forms.ModelForm):
+class BookingForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

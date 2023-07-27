@@ -19,7 +19,7 @@
       <form>
         <h2 class="text-center brand">Get in Touch</h2>
         <p class="thin">Please log in to send us a message. We value your feedback and questions!</p>
-        <button class="btn-signup" type="submit"><a href="{% url 'account_login' %}" class="link">Sign in</a></button>
+        <button class="btn-signuup" id="login-contact" type="submit"><a href="{% url 'account_login' %}" class="link">Sign in</a></button>
       </form>
       {% else %}
       <!-- Display form if user is logged in-->
@@ -30,7 +30,7 @@
           <!-- Contact form -->
           {{ contact_form| crispy }}
         </div>
-        <button class="btn-signup" type="submit">Submit</button>
+        <button class="btn btn-primary btn-signuup" id="login-contact" type="submit">Submit</button>
       </form>
       {% endif %}
       {% endif %}

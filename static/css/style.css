@@ -5,6 +5,18 @@
   color: #4A4A4F;
 }
 
+.mb-5 {
+  margin-bottom: 7rem!important;
+}
+.mt-5 {
+  margin-top: 6rem!important;
+}
+
+.mt-3 {
+  margin-top: 4rem !important;
+  margin-bottom: 2rem;
+}
+
 .red-o {
   color: #E84610;
 }
@@ -19,6 +31,7 @@
 
 .dark-bg {
   background-color: #445261;
+  color: white;
 }
 
 .main-bg {
@@ -164,10 +177,6 @@
 }
 
 /* Add some margin to the top and bottom*/
-.mt-3 {
-  margin-top: 1rem !important;
-  margin-bottom: 1rem;
-}
 
 /* Style the heading */
 h3 {
@@ -227,6 +236,19 @@ input[type="password"] {
 .btn-primary:hover {
   background-color: white;
   color: #3c3c68;
+}
+
+#login-contact {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  color: #fff;
+  border: 1px solid #3c3c68;
+  border-radius: 0.25rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.2rem;
 }
 
 .footer-dark {
