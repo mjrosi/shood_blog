@@ -1,12 +1,14 @@
-# Imports
 from django.contrib import admin
 from rangefilter.filters import DateRangeFilter
-from .models import DeliveryService, Booking
+from .models import Table, Booking
 
-@admin.register(DeliveryService)
-class DeliveryServiceAdmin(admin.ModelAdmin):
-    list_display = ('service_id', 'service_type', 'delivery_time')
+# Registration of tables to display in the admin panel
+@admin.register(Table)
+class TableAdmin(admin.ModelAdmin):
+    list_display = ('table_id', 'table_name', 'max_seats')
 
+
+# Registration of bookings to display in the admin panel
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
     list_filter = (
@@ -14,9 +16,9 @@ class BookingAdmin(admin.ModelAdmin):
         'name',
         'email',
         'phone',
-        'service_type',
+        'guest_count',
         'status',
-        'service_id',
+        'table_id',
         'requested_date',
         'requested_time',
         'created_date'
@@ -26,14 +28,14 @@ class BookingAdmin(admin.ModelAdmin):
         'user',
         'name',
         'phone',
-        'service_type',
+        'guest_count',
         'status',
-        'delivery_service',
+        'table',
         'requested_date',
         'requested_time',
         'created_date')
 
-    search_fields = ['user__name']
+    search_fields = ['guest__name']
     list_filter = (('requested_date', DateRangeFilter),)
     actions = ['confirm_bookings']
 

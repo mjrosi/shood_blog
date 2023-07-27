@@ -8,7 +8,7 @@
     <div class="col-md-8 mt-3 offset-md-2">
       <h2 class="text-center brand">Contact Us</h2>
 
-      <p class="mb-4 thin">Have any questions or suggestions? Need assistance with your grocery delivery? We're here to help! Please fill out the form below to get in touch with our friendly support team.</p>
+      <p class="mb-4 thin">Have any questions or suggestions? Need assistance with your grocery delivery? We're here to help! First, Please log in to send us a message. We value your feedback and questions!</p>
     </div>
   </div>
   
@@ -17,9 +17,7 @@
       <!-- Display if user is not logged in -->
       {% if not user.is_authenticated %}
       <form>
-        <h2 class="text-center brand">Get in Touch</h2>
-        <p class="thin">Please log in to send us a message. We value your feedback and questions!</p>
-        <button class="btn-signuup" id="login-contact" type="submit"><a href="{% url 'account_login' %}" class="link">Sign in</a></button>
+        <button class="btn-signuup" id="login-contact" type="submit"><a href="{% url 'account_login' %}" class="link">Log in</a></button>
       </form>
       {% else %}
       <!-- Display form if user is logged in-->
@@ -27,6 +25,7 @@
       <form method="POST" enctype="multipart/form-data" class="card-body dark-bg">
         {% csrf_token %}
         <div class="form-group">
+                <p class="thin">We're here to help! Please, send us a message. We value your feedback and questions!</p>
           <!-- Contact form -->
           {{ contact_form| crispy }}
         </div>

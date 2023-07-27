@@ -6,95 +6,150 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.edit import UpdateView
 from django.core.paginator import Paginator
-
 from .models import Booking
 from .forms import BookingForm
 
 
+# This will get the user information if they are logged in
+
 def get_user_instance(request):
+    """
+    retrieves user details if logged in
+    """
+
     user_email = request.user.email
     user = User.objects.filter(email=user_email).first()
     return user
 
-class DeliveryBookings(View):
-    template_name = 'bookings/delivery_request.html'
+
+# Display the booking form and auto fill users email,
+# if user is did not provide email it will stay empty
+
+
+class Reservations(View):
+    """
+    This view displays the booking form if the user
+    is registered and inserts the users email into the
+    email field
+    """
+    template_name = 'bookings/reservations.html'
     success_message = 'Booking has been made.'
 
     def get(self, request, *args, **kwargs):
+        """
+        Retrieves users email and inputs into email input
+        """
         if request.user.is_authenticated:
             email = request.user.email
             booking_form = BookingForm(initial={'email': email})
         else:
             booking_form = BookingForm()
-        return render(request, 'bookings/delivery_request.html',
+        return render(request, 'bookings/reservations.html',
                       {'booking_form': booking_form})
 
     def post(self, request):
+        """
+        Checks that the provided info is valid format
+        and then posts to database
+        """
         booking_form = BookingForm(data=request.POST)
 
         if booking_form.is_valid():
-            delivery_booking = booking_form.save(commit=False)
-            delivery_booking.user = request.user
-            delivery_booking.save()
+            booking = booking_form.save(commit=False)
+            booking.user = request.user
+            booking.save()
             messages.success(
-                request, "Booking successful, awaiting confirmation")
+                request, "Booking succesful, awaiting confirmation")
             return render(request, 'bookings/confirmed.html')
 
-        return render(request, 'bookings/delivery_request.html',
+        return render(request, 'bookings/reservations.html',
                       {'booking_form': booking_form})
 
+
+# Dispays the confirmation page upon a succesful booking
+
+
 class Confirmed(generic.DetailView):
+    """
+    This view will display confirmation on a successful booking
+    """
     template_name = 'bookings/confirmed.html'
 
     def get(self, request):
         return render(request, 'bookings/confirmed.html')
 
-class DeliveryBookingList(generic.ListView):
+
+# Display all the bookings the user has active,
+# bookings older than today will be expired and the
+# user will not be able to edit or cancel them once
+# expired
+
+
+class BookingList(generic.ListView):
+    """
+    This view will display all the bookings
+    a particular user has made
+    """
     model = Booking
     queryset = Booking.objects.filter().order_by('-created_date')
-    template_name = 'delivery_list.html'
+    template_name = 'booking_list.html'
     paginated_by = 4
 
     def get(self, request, *args, **kwargs):
 
-        delivery_booking = Booking.objects.all()
+        booking = Booking.objects.all()
         paginator = Paginator(Booking.objects.filter(user=request.user), 4)
         page = request.GET.get('page')
-        delivery_booking_page = paginator.get_page(page)
+        booking_page = paginator.get_page(page)
         today = datetime.datetime.now().date()
 
-        for date in delivery_booking:
-            if date.delivery_date < today:
+        for date in booking:
+            if date.requested_date < today:
                 date.status = 'Booking Expired'
 
         if request.user.is_authenticated:
-            delivery_bookings = Booking.objects.filter(user=request.user)
+            bookings = Booking.objects.filter(user=request.user)
             return render(
                 request,
-                'bookings/delivery_list.html',
+                'bookings/booking_list.html',
                 {
-                    'delivery_booking': delivery_booking,
-                    'delivery_bookings': delivery_bookings,
-                    'delivery_booking_page': delivery_booking_page})
+                    'booking': booking,
+                    'bookings': bookings,
+                    'booking_page': booking_page})
         else:
             return redirect('accounts/login.html')
 
-class EditDeliveryBooking(SuccessMessageMixin, UpdateView):
+
+# Displays the edit booking page and form so the user
+# can then change any detail of the booking and update it
+
+
+class EditBooking(SuccessMessageMixin, UpdateView):
+    """
+    This view will display the booking by it's primary key
+    so the user can then edit it
+    """
     model = Booking
     form_class = BookingForm
-    template_name = 'bookings/edit_delivery.html'
+    template_name = 'bookings/edit_booking.html'
     success_message = 'Booking has been updated.'
 
     def get_success_url(self, **kwargs):
-        return reverse('delivery_list')
+        return reverse('booking_list')
 
-def cancel_delivery_booking(request, pk):
-    delivery_booking = Booking.objects.get(pk=pk)
+
+# Deletes the selected booking the user wishes to cancel
+
+def cancel_booking(request, pk):
+    """
+    Deletes the booking identified by it's primary key by the user
+    """
+    booking = Booking.objects.get(pk=pk)
 
     if request.method == 'POST':
-        delivery_booking.delete()
+        booking.delete()
         messages.success(request, "Booking cancelled")
-        return redirect('delivery_list')
+        return redirect('booking_list')
 
     return render(
-        request, 'bookings/cancel_delivery.html', {'delivery_booking': delivery_booking})
+        request, 'bookings/cancel_booking.html', {'booking': booking})

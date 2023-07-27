@@ -4,7 +4,8 @@ from datetime import datetime
 from phonenumber_field.formfields import PhoneNumberField
 from .models import Booking
 
-# The booking form users will use to book a delivery service
+
+# The booking form users will use to book a table
 
 
 class BookingForm(forms.ModelForm):
@@ -13,7 +14,7 @@ class BookingForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper(self)
 
-    delivery_date = forms.DateField(
+    requested_date = forms.DateField(
         widget=forms.DateInput(
             attrs={'type': 'date', 'min': datetime.now().date()}))
 
@@ -26,5 +27,7 @@ class BookingForm(forms.ModelForm):
             'name',
             'phone',
             'email',
-            'delivery_date',
-            'service',)
+            'guest_count',
+            'table',
+            'requested_date',
+            'requested_time')

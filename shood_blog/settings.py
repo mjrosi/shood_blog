@@ -64,6 +64,8 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+
 MESSAGE_TAGS = {
     messages.INFO: 'alert-info',
     messages.DEBUG: 'alert-info',

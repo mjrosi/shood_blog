@@ -2,15 +2,24 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.models import User
 
-# Delivery options
-delivery_options = (
-    ('Standard/Basic Delivery', 'Standard/Basic Delivery'),
-    ('Expedited Delivery', 'Expedited Delivery'),
-    ('Premium Delivery', 'Premium Delivery'),
-    ('White Glove/Platinum Delivery', 'White Glove/Platinum Delivery'),
+# Restaurant first sitting at noon and last sitting 11pm
+time_slots = (
+    ('12:00', '12:00'),
+    ('13:00', '13:00'),
+    ('14:00', '14:00'),
+    ('15:00', '15:00'),
+    ('16:00', '16:00'),
+    ('17:00', '17:00'),
+    ('18:00', '18:00'),
+    ('19:00', '19:00'),
+    ('20:00', '20:00'),
+    ('21:00', '21:00'),
+    ('22:00', '22:00'),
+    ('23:00', '23:00'),
 )
 
-# Status options
+
+# Status options inspired by the JustEat status' when ordering
 status_options = (
     ('Awaiting confirmation', 'Awaiting Confirmation'),
     ('Booking Confirmed', 'Booking Confirmed'),
@@ -18,42 +27,48 @@ status_options = (
     ('Booking Expired', 'Booking Expired'),
 )
 
-# The DeliveryService model for the database
-class DeliveryService(models.Model):
+
+# The table model for the database
+
+
+class Table(models.Model):
     """
-    a class for the DeliveryService model
+    a class for the Table model
     """
-    service_id = models.AutoField(primary_key=True)
-    service_type = models.CharField(max_length=50)
-    delivery_time = models.TimeField()
-    service_name = models.CharField(
+    table_id = models.AutoField(primary_key=True)
+    table_name = models.CharField(
         max_length=50,
-        choices=delivery_options,
-        default='Standard/Basic Delivery'
+        default='New Table',
+        unique=True
         )
+    max_seats = models.PositiveIntegerField(default=2)
 
     class Meta:
-        ordering = ['service_name']
+        ordering = ['-max_seats']
 
     def __str__(self):
-        return self.service_name
+        return self.table_name
 
-# The Booking model for the database
+
+# The booking model for the database
+
+
 class Booking(models.Model):
     """
     a class for the Booking model
     """
-    booking_id = models.IntegerField(primary_key=True)
+    booking_id = models.AutoField(primary_key=True)
     created_date = models.DateTimeField(auto_now_add=True)
-    delivery_date = models.DateField()
-    service_type = models.CharField(max_length=50)
-    delivery_service = models.ForeignKey(DeliveryService, on_delete=models.CASCADE)
     requested_date = models.DateField()
-    requested_time = models.TimeField()
-    service = models.ForeignKey(
-        DeliveryService,
+    requested_time = models.CharField(
+        max_length=25,
+        choices=time_slots,
+        default='17:00'
+        )
+    table = models.ForeignKey(
+        Table,
         on_delete=models.CASCADE,
-        related_name="service_reserved",
+        related_name="table_reserved",
         null=True
         )
     user = models.ForeignKey(
@@ -70,12 +85,21 @@ class Booking(models.Model):
     status = models.CharField(
         max_length=25,
         choices=status_options,
-        default='Awaiting confirmation'
+        default='awaiting confirmation'
         )
+    seats = (
+        (1, "1 Guest"),
+        (2, "2 Guests"),
+        (3, "3 Guests"),
+        (4, "4 Guests"),
+        (5, "5 Guests"),
+        (6, "6 Guests"),
+        )
+    guest_count = models.IntegerField(choices=seats, default=2)
 
     class Meta:
-        ordering = ['-delivery_date']
+        ordering = ['-requested_time']
+        unique_together = ('requested_date', 'requested_time', 'table')
 
     def __str__(self):
         return self.status
-
