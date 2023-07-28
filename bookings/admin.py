@@ -1,11 +1,11 @@
 from django.contrib import admin
 from rangefilter.filters import DateRangeFilter
-from .models import Table, Booking
+from .models import Service, Booking
 
 # Registration of tables to display in the admin panel
-@admin.register(Table)
-class TableAdmin(admin.ModelAdmin):
-    list_display = ('table_id', 'table_name', 'max_seats')
+@admin.register(Service)
+class ServiceAdmin(admin.ModelAdmin):
+    list_display = ('service_id', 'service_name')
 
 
 # Registration of bookings to display in the admin panel
@@ -16,9 +16,8 @@ class BookingAdmin(admin.ModelAdmin):
         'name',
         'email',
         'phone',
-        'guest_count',
         'status',
-        'table_id',
+        'service_id',
         'requested_date',
         'requested_time',
         'created_date'
@@ -28,9 +27,8 @@ class BookingAdmin(admin.ModelAdmin):
         'user',
         'name',
         'phone',
-        'guest_count',
         'status',
-        'table',
+        'service',
         'requested_date',
         'requested_time',
         'created_date')
