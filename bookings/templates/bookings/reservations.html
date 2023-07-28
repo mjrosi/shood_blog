@@ -2,62 +2,80 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-
-<div class="container-fluid mt-5">
-    <div class="row d-flex justify-content-center">
-        <div class="col-sm-8 mt-5 mb-5">
-            <h1 class="text-center">Book a Service</h1><hr>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center mt-5 mb-5">
+            <h1>Book a Service</h1>
+            <hr>
         </div>
-    </div>
-<div class="container">
-    <div class="row justify-content-center mt-3">
-        <div class="col-md-6">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12 p-5 bg-darker rounded booking-card">
-                        <!-- Display if user is not logged in -->
-                        {% if not user.is_authenticated %}
-                        <h3>Login Required</h3>
-                        <p>Please login to book a table</p>
-                        <button class="btn btn-success" type="submit"><a href="{% url 'account_login' %}">Go to Login
-                                Page</a></button>
-                        {% else %}
-                        <!-- Display form if user is logged in-->
-                        {% if user.is_authenticated %}
-                        <div class="row text-center">
-                            <div class="col-12">
-                                <h5 class="fw-bold mt-3">Your Booking</h5>
-                            </div>
-                        </div>
-                        <form method="POST" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <!-- booking form -->
-                            {{ booking_form| crispy }}
-
-                            <button class="btn btn-success" type="submit">Submit</button>
-                        </form>
-                        {% endif %}
-                        {% endif %}
-                        <!-- Form Errors from stack overflow -->
-                        {% if booking_form.errors %}
-                        {% for field in booking_form %}
-                        {% for error in field.errors %}
-                            <div class="alert alert-danger">
-                                <strong>{{ error|escape }}</strong>
-                            </div>
-                        {% endfor %}
-                        {% endfor %}
-                        {% for error in booking_form.non_field_errors %}
-                            <div class="alert alert-danger">
-                                <strong>{{ error|escape }}</strong>
-                            </div>
-                        {% endfor %}
-                        {% endif %}
+        <div class="col-lg-5 col-md-6 mb-4">
+            <h2>1. Standard Delivery:</h2><hr>
+            <p>This service provides a straightforward delivery experience. While there are no specific delivery times or added features, it's a reliable and affordable choice for sending packages from point A to point B.</p>
+            <h2>2. Expedited Delivery:</h2><hr>
+            <p>Promising faster deliveries than the standard option, this service guarantees specified delivery times, often within 1-2 days. With higher costs, this option adds value through speed and reliability.</p>
+        </div>
+        <div class="col-lg-5 col-md-6 mb-4">
+            <h2>3. Premium Delivery:</h2><hr>
+            <p>Offering more than just speed, this service enhances the customer experience with features like same-day delivery. While more expensive, it's an optimal choice for those valuing convenience and speed.</p>
+            <h2>4. Platinum Delivery:</h2><hr>
+            <p>A luxurious option, Platinum Delivery offers high-quality personalized service, including ultra-fast delivery, unpacking, and installation. It's the top-end choice for valuable items, reflecting in its premium price.</p>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-lg-10 offset-lg-1">
+                    <div class="alert alert-info mt-3">
+                        <h5 class="alert-heading">Delivery Services Disclaimer:</h5>
+                        <p class="small">If you are considering our Standard and Expedited Delivery services. Please note that the availability of requested dates and times for both these services is subject to our delivery schedules and operational capacity. While we strive to accommodate your preferences, we cannot guarantee your requested date and time until we confirm your booking.</p>
+        
+                        <p class="small">After you have submitted your request, our team will review your delivery details. You will then receive a confirmation email, which will include information about your delivery schedule. If your requested date and time is not available, our team will propose alternative options for you to choose from.</p>
+        
+                        <hr>
+        
+                        <p class="mb-0 small">We appreciate your understanding and assure you that we will do our best to meet your delivery requirements. Thank you for your patience and trust in our services.</p>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="col-12 col-md-8 p-5 bg-darker rounded booking-card">
+            <!-- Display if user is not logged in -->
+            {% if not user.is_authenticated %}
+            <h3>Login Required</h3>
+            <p>Please login to book a service</p>
+            <a href="{% url 'account_login' %}" class="btn btn-success">Go to Login Page</a>
+            {% else %}
+            <!-- Display form if user is logged in -->
+            {% if user.is_authenticated %}
+            <div class="text-center">
+                <h5 class="fw-bold mt-3">Your Booking</h5>
+                
+            </div>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- booking form -->
+                {{ booking_form| crispy }}
+
+                <button class="btn btn-success" type="submit">Submit</button>
+            </form>
+            
+            
+            {% endif %}
+            {% endif %}
+            <!-- Form Errors from stack overflow -->
+            {% if booking_form.errors %}
+            {% for field in booking_form %}
+            {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+            {% endfor %}
+            {% for error in booking_form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+            {% endif %}
+        </div>
     </div>
 </div>
-
 {% endblock %}
