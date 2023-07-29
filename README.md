@@ -60,12 +60,11 @@ The plan for this project was carried out using the Agile Methodology in Github.
 * As a user I can login so that I can book a delivery service (Must have)
 * As a user I can see my login status so that I know if I am logged in or not (Must have)
 * As a User I can view the site's blog so that I can learn additional information and read articles
-* As a User I can not book a date in the past so that my booking is valid (Must have)
 * As a User I can view blog posts page by page so that I can browse without seeing an overloaded page
 * As a User, I can view a list of posts to select one to read
 * As a User, I can click on a post to read the full text
 * As a User, I can view the number of likes on each post to see which is the most popular
-* As a User, I can view comments on an individual post to read the conversation.
+* As a User, I can view comments on an individual post to read the conversation
 
 ## Admin / Authorised User
 * As an Admin / Authorised User I can log in so that I can access the back end of the site (Must have)
@@ -77,10 +76,6 @@ The plan for this project was carried out using the Agile Methodology in Github.
 
 Live to the project in Github [here](https://github.com/users/mjrosi/projects/1/views/1).
 
-![User Story To DO](/media/images/user-story-to-do.png)
-![User Story in Progress](/media/images/user-story-progress.png)
-![User Story Done](/media/images/user-story-done.png)
-
 
 ## Features
 
@@ -88,48 +83,97 @@ Live to the project in Github [here](https://github.com/users/mjrosi/projects/1/
 * The Front page asks a the visitor of the site to log into view the posts, book a delivery service and contact. 
 * If already logged in then it displays My bookings which allows the user to see all their bookings.
 
-![Home Page](/media/images/home.png)
+<details><summary>See feature images</summary>
+
+![Home Page](/media/images/Screenshot_home_page.png)
+</details>
 
 #### Navigation Bar
 * The main navigation bar appears at the top of the page, clearly displaying the main navigational links users would require. For sign in and sign up and log out for signed in users.
 
-![Nav Bar](/media/images/header.png)
-![Nav Bar](/media/images/header-auth.png)
+<details><summary>See feature images</summary>
+
+![Nav Bar](/media/images/Screenshot_navbar_login.png)
+![Nav Bar](/media/images/Screenshot_navbar_loggedin.png)
+</details>
 
 #### Footer
 * A common footer is utilised throughout the site with the links to other SHOOD websites which are my other portfolio projects, about SHOOD Blog and link to social medias.
+<details><summary>See feature images</summary>
 
 ![footer](/media/images/footer.png)
+</details>
 
-##### View post detail
+#### View post detail
+* The user can read the selected blog post
+* Registerd user can comment on a blog post
+* Registerd user can like a blog post
+
+<details><summary>See feature images</summary>
+
 ![Example Post Card](/media/images/postview.png)
+</details>
 
 #### Sign up
 * Users can sign up in order to like or comment any posts.
+
+<details><summary>See feature images</summary>
+
 ![Sign up](/media/images/signup.png)
+</details>
 
 #### Sign in
 * Users can sign in to their accounts.
+
+<details><summary>See feature images</summary>
+
 ![Sign up](/media/images/signin.png)
+</details>
 
 #### Book
 * Allows the user to book a delivery service using the booking form
 * Messages are displayed if the data is not valid such as phone number lenght is too short and the email address is not a valid format
+
+<details><summary>See feature images</summary>
+
+![Book](/media/images/Screenshot_book.png)
+![Book](/media/images/Screenshot_book_loggedin.png)
+</details>
 
 #### My Bookings
 * Allows the users to see all their bookings in a paginated layout, 4 per page
 
 * Status of the booking is displayed, awaiting confirmation and when approved will then change to confirmed status for the users
 
+<details><summary>See feature images</summary>
+
+![My Bookings](/media/images/Screenshot_mybookings.png)
+</details>
+
 #### Edit Booking
 * Allows the users to edit their bookings
-See feature images
+
+<details><summary>See feature images</summary>
+
+![Edit Bookings](/media/images/Screenshot_editbooking.png)
+</details>
 
 #### Cancel Booking
-Allows the users to cancel their bookings
+* Allows the users to cancel their bookings
+<details><summary>See feature images</summary>
+
+![Cancel Bookings](/media/images/Screenshot_cancelbooking.png)
+</details>
+
 
 #### Contact Us
-Registered users can send messages the site admin?owner via the message form
+* Registered users can send messages the site admin?owner via the message form
+
+<details><summary>See feature images</summary>
+
+![Contact Us](/media/images/Screenshot_contactus_loggedin.png)
+![Contact Us](/media/images/Screenshot_contactus.png)
+</details>
 
 #### 
 
