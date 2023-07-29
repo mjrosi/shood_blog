@@ -17,7 +17,7 @@
       <!-- Display if user is not logged in -->
       {% if not user.is_authenticated %}
       <form>
-        <button class="btn-signuup" id="login-contact" type="submit"><a href="{% url 'account_login' %}" class="link">Log in</a></button>
+        <button class="btn btn-primary btn-signup" type="submit"><a href="{% url 'account_login' %}" class="link">Log in</a></button>
       </form>
       {% else %}
       <!-- Display form if user is logged in-->
