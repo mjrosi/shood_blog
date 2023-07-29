@@ -2,45 +2,50 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-
-<div class="container-fluid mt-5">
-    <div class="row d-flex justify-content-center">
-        <div class="col-sm-8 mt-5 mb-5">
-            <h1 class="text-center">Change of Plans?</h1><hr>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center mt-5 mb-5">
+            <h1>Edit Booking</h1>
+            <hr>
         </div>
-    </div>
-<div class="container">
-    <div class="row justify-content-center mt-3">
-        <div class="col-md-5">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12 p-5 bg-darker rounded booking-card">
-                        <!-- Display if user is not logged in -->
-                        {% if not user.is_authenticated %}
-                        <h2>Login required</h2>
-                        <p>Please login to edit bookings</p>
-                        <button class="btn btn-success" type="submit"><a href="{% url 'account_login' %}">Go to Login
-                                Page</a></button>
-                        {% else %}
-                        <!-- Display form if user is logged in-->
-                        {% if user.is_authenticated and user == booking.user %}
-                        <h2>Edit Booking</h2>
-                        <form action="{% url 'edit_booking' booking.pk %}" method="POST" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <div>
-                                {{ form|crispy }}
-                            </div>
-                            <div>
-                                <button class="btn btn-success" type="submit">Update</button>
-                            </div>
-                        </form>
-                        {% endif %}
-                        {% endif %}
-                    </div>
-                </div>
+        <!-- Booking information and disclaimer will go here if needed -->
+        <div class="col-12 col-md-8 p-5 bg-darker rounded booking-card">
+            <!-- Display if user is not logged in -->
+            {% if not user.is_authenticated %}
+            <h3>Login Required</h3>
+            <p>Please login to edit bookings</p>
+            <a href="{% url 'account_login' %}" class="btn btn-signup btn-primary">Go to Login Page</a>
+            {% else %}
+            <!-- Display form if user is logged in -->
+            {% if user.is_authenticated and user == booking.user %}
+            <div class="text-center">
+                <h5 class="fw-bold mt-3">Your Booking</h5>
             </div>
+            <form action="{% url 'edit_booking' booking.pk %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- booking form -->
+                {{ form|crispy }}
+
+                <button class="btn btn-signup btn-primary" type="submit">Update</button>
+            </form>
+            <!-- Form Errors -->
+            {% if form.errors %}
+            {% for field in form %}
+            {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+            {% endif %}
+            {% endif %}
+            {% endif %}
         </div>
     </div>
 </div>
-
 {% endblock %}
