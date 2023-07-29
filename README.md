@@ -167,7 +167,7 @@ Live to the project in Github [here](https://github.com/users/mjrosi/projects/1/
 
 
 #### Contact Us
-* Registered users can send messages the site admin?owner via the message form
+* Registered users can send messages the site admin/owner via the message form
 
 <details><summary>See feature images</summary>
 
